@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAxis xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Axis>
+    <XMLFileName>C:\Users\dmmos\source\repos\WpfTwinCAT\bin\Debug\netcoreapp3.1/sample_settings.xml</XMLFileName>
+    <Name>Настройки АРЗ</Name>
+    <Index>00</Index>
+    <ArrayOfGroupes>
+      <Group>
+        <Name>Параметры Энкодера</Name>
+        <Index>0000</Index>
+        <ArrayOfParameters>
+          <Param>
+            <Descriptor>Разрешение:</Descriptor>
+            <Value>8192</Value>
+            <Tag>Разрешение энкодера равно количеству шагов на один оборот</Tag>
+            <Help>Введите величину, указанную производителем энкодера в паспорте изделия</Help>
+            <Address>000000</Address>
+          </Param>
+          <Param>
+            <Descriptor>Количество шагов на 1 мм:</Descriptor>
+            <Value>13.88</Value>
+            <Tag>Количество шагов энкодера на 1 мм перемещения подвеса</Tag>
+            <Help>Скорректируйте величину в случае изменения параметров механики привода</Help>
+            <Address>000001</Address>
+          </Param>
+          <Param>
+            <Descriptor>Нижний концевик, мм:</Descriptor>
+            <Value>250</Value>
+            <Tag>Значение энкодера при закрытом АРЗ</Tag>
+            <Help>Введите расстояние начальной точки срабатывания программного концевика при закрытом АРЗ в миллиметрах</Help>
+            <Address>000002</Address>
+          </Param>
+          <Param>
+            <Descriptor>Верхний концевик, мм:</Descriptor>
+            <Value>8850</Value>
+            <Tag>Значение энкодера при открытом АРЗ</Tag>
+            <Help>Введите расстояние конечной точки срабатывания программного концевика при открытом АРЗ в миллиметрах</Help>
+            <Address>000003</Address>
+          </Param>
+          <Param>
+            <Descriptor>Расстояние обратного отскока:</Descriptor>
+            <Value>50</Value>
+            <Tag>Дистанция обратного отскока при наезде на рабочий концевик </Tag>
+            <Help>Введите величину в миллиметрах</Help>
+            <Address>000004</Address>
+          </Param>
+          <Param>
+            <Descriptor>Дистанция на 1 оборот редуктора, мм:</Descriptor>
+            <Value>630</Value>
+            <Tag>Дистанция, которую проходит привод за один оборот редуктора</Tag>
+            <Help>Данная величина определяется параметрами механического привода конечного устройства</Help>
+            <Address>000005</Address>
+          </Param>
+          <Param>
+            <Descriptor>Нулевой уровень:</Descriptor>
+            <Value>281805</Value>
+            <Tag>Калибровка энкодера</Tag>
+            <Help>Измерьте расстояние от начальной точки движения привода до текущей и установите эту величину в миллиметрах</Help>
+            <Address>000006</Address>
+          </Param>
+        </ArrayOfParameters>
+      </Group>
+      <Group>
+        <Name>Параметры Конвертора</Name>
+        <Index>0001</Index>
+        <ArrayOfParameters>
+          <Param>
+            <Descriptor>Скорость отскока:</Descriptor>
+            <Value>3</Value>
+            <Tag>Скорость вращения двигателя при съезде с концевика</Tag>
+            <Help>Установите величину в пределах от 3 до 10 оборотов/секунду</Help>
+            <Address>000100</Address>
+          </Param>
+          <Param>
+            <Descriptor>Время ускорения:</Descriptor>
+            <Value>1.1</Value>
+            <Tag>Время разгона до выхода на максимальную скорость</Tag>
+            <Help>Установите значение времени в секундах</Help>
+            <Address>000101</Address>
+          </Param>
+          <Param>
+            <Descriptor>Время торможения:</Descriptor>
+            <Value>0.2</Value>
+            <Tag>Установите время торможения с максимальной скорости до 0</Tag>
+            <Help>Установите значение времени в секундах</Help>
+            <Address>000102</Address>
+          </Param>
+          <Param>
+            <Descriptor>Мотор макс. кол. оборотов/мин:</Descriptor>
+            <Value>1440</Value>
+            <Tag>Характеристика двигателя - максимальное количество оборотов в минуту</Tag>
+            <Help>Введите величину, указанную производителем двигателя (обычно указана на шильде двигателя)</Help>
+            <Address>000103</Address>
+          </Param>
+          <Param>
+            <Descriptor>Понижающий коэф. редуктора:</Descriptor>
+            <Value>21.3</Value>
+            <Tag>Характеристика редуктора</Tag>
+            <Help>Введите величину, указанную производителем редуктора (обычно указана на шильде редуктора, установленного в паре с двигателем)</Help>
+            <Address>000104</Address>
+          </Param>
+          <Param>
+            <Descriptor>Период сканирования, мс:</Descriptor>
+            <Value>10</Value>
+            <Tag>Период опроса конвертором внешних параметров привода</Tag>
+            <Help>Данная величина определяется системными настройками EtherCAT. Так при частоте пакетов EtherCAT 1мс, период сканирования конвертора должна быть не менее 10 мс для надежного считывания данных из буфера CAN</Help>
+            <Address>000105</Address>
+          </Param>
+        </ArrayOfParameters>
+      </Group>
+    </ArrayOfGroupes>
+  </Axis>
+  <Axis>
+    <XMLFileName>C:\Users\dmmos\source\repos\WpfTwinCAT\bin\Debug\netcoreapp3.1/sample_settings.xml</XMLFileName>
+    <Name>Настройки ПОЗ</Name>
+    <Index>01</Index>
+    <ArrayOfGroupes>
+      <Group>
+        <Name>Параметры Энкодера</Name>
+        <Index>0100</Index>
+        <ArrayOfParameters>
+          <Param>
+            <Descriptor>Разрешение:</Descriptor>
+            <Value>32768</Value>
+            <Tag>Разрешение энкодера равно количеству шагов на один оборот</Tag>
+            <Help>Введите величину, указанную производителем энкодера в паспорте изделия</Help>
+            <Address>010000</Address>
+          </Param>
+          <Param>
+            <Descriptor>Количество шагов на 1 мм:</Descriptor>
+            <Value>24.500</Value>
+            <Tag>Количество шагов энкодера на 1 мм перемещения подвеса</Tag>
+            <Help>Скорректируйте величину в случае изменения параметров механики привода</Help>
+            <Address>010001</Address>
+          </Param>
+          <Param>
+            <Descriptor>Нижний концевик, мм:</Descriptor>
+            <Value>400</Value>
+            <Tag>Значение энкодера в точке 0 (планшет)</Tag>
+            <Help>Введите величину, соответствующую самой нижней точке подвеса в миллиметрах</Help>
+            <Address>010002</Address>
+          </Param>
+          <Param>
+            <Descriptor>Верхний концевик, мм:</Descriptor>
+            <Value>18500</Value>
+            <Tag>Значение энкодера в самой верхней точке останова</Tag>
+            <Help>Введите величину, соответствующую самой верхней точке подвеса в миллиметрах</Help>
+            <Address>010003</Address>
+          </Param>
+          <Param>
+            <Descriptor>Расстояние обратного отскока:</Descriptor>
+            <Value>50</Value>
+            <Tag>Дистанция обратного отскока при наезде на рабочий концевик </Tag>
+            <Help>Введите величину в миллиметрах</Help>
+            <Address>010004</Address>
+          </Param>
+          <Param>
+            <Descriptor>Дистанция на 1 об. редуктора, мм:</Descriptor>
+            <Value>1694</Value>
+            <Tag>Дистанция, которую проходит привод за один оборот редуктора</Tag>
+            <Help>Данная величина определяется параметрами механического привода конечного устройства</Help>
+            <Address>010005</Address>
+          </Param>
+          <Param>
+            <Descriptor>Нулевой уровень:</Descriptor>
+            <Value>177752</Value>
+            <Tag>Калибровка энкодера</Tag>
+            <Help>Измерьте расстояние от начальной точки движения привода до текущей и установите эту величину в миллиметрах</Help>
+            <Address>010006</Address>
+          </Param>
+        </ArrayOfParameters>
+      </Group>
+      <Group>
+        <Name>Параметры Конвертора</Name>
+        <Index>0101</Index>
+        <ArrayOfParameters>
+          <Param>
+            <Descriptor>Скорость отскока:</Descriptor>
+            <Value>5</Value>
+            <Tag>Скорость вращения двигателя при съезде с концевика</Tag>
+            <Help>Установите величину в пределах от 3 до 10 оборотов/секунду</Help>
+            <Address>010100</Address>
+          </Param>
+          <Param>
+            <Descriptor>Время ускорения:</Descriptor>
+            <Value>2.1</Value>
+            <Tag>Время разгона до выхода на максимальную скорость</Tag>
+            <Help>Установите значение времени в секундах</Help>
+            <Address>010101</Address>
+          </Param>
+          <Param>
+            <Descriptor>Время торможения:</Descriptor>
+            <Value>1</Value>
+            <Tag>Установите время торможения с максимальной скорости до 0</Tag>
+            <Help>Установите значение времени в секундах</Help>
+            <Address>010102</Address>
+          </Param>
+          <Param>
+            <Descriptor>Мотор макс. кол. оборотов/мин:</Descriptor>
+            <Value>1350</Value>
+            <Tag>Характеристика двигателя - максимальное количество оборотов в минуту</Tag>
+            <Help>Введите величину, указанную производителем двигателя (обычно указана на шильде двигателя)</Help>
+            <Address>010103</Address>
+          </Param>
+          <Param>
+            <Descriptor>Понижающий коэф. редуктора:</Descriptor>
+            <Value>20</Value>
+            <Tag>Характеристика редуктора</Tag>
+            <Help>Введите величину, указанную производителем редуктора (обычно указана на шильде редуктора, установленного в паре с двигателем)</Help>
+            <Address>010104</Address>
+          </Param>
+          <Param>
+            <Descriptor>Период сканирования, мс:</Descriptor>
+            <Value>10</Value>
+            <Tag>Период опроса конвертором внешних параметров привода</Tag>
+            <Help>Данная величина определяется системными настройками EtherCAT. Так при частоте пакетов EtherCAT 1мс, период сканирования конвертора должна быть не менее 10 мс для надежного считывания данных из буфера CAN</Help>
+            <Address>010105</Address>
+          </Param>
+        </ArrayOfParameters>
+      </Group>
+    </ArrayOfGroupes>
+  </Axis>
+</ArrayOfAxis>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<users>
+  <user name="Bill Gates">
+    <company>Microsoft</company>
+    <age>48</age>
+  </user>
+  <user name="Larry Page">
+    <company>Google</company>
+    <age>42</age>
+  </user>
+</users>
+
+Теперь пройдемся по этому документу и выведем его данные на консоль:
+using System.Xml;
+class Program
+{
+    static void Main(string[] args)
+    {
+        XmlDocument xDoc = new XmlDocument();
+        xDoc.Load("D://users.xml");
+        // получим корневой элемент
+        XmlElement xRoot = xDoc.DocumentElement;
+        // обход всех узлов в корневом элементе
+        foreach(XmlNode xnode in xRoot)
+        {
+            // получаем атрибут name
+            if(xnode.Attributes.Count>0)
+            {
+                XmlNode attr = xnode.Attributes.GetNamedItem("name");
+                if (attr!=null)
+                    Console.WriteLine(attr.Value);
+            }
+            // обходим все дочерние узлы элемента user
+            foreach(XmlNode childnode in xnode.ChildNodes)
+            {
+                // если узел - company
+                if(childnode.Name=="company")
+                {
+                    Console.WriteLine($"Компания: {childnode.InnerText}");
+                }
+                // если узел age
+                if (childnode.Name == "age")
+                {
+                    Console.WriteLine($"Возраст: {childnode.InnerText}");
+                }
+            }
+            Console.WriteLine();
+        }
+        Console.Read();
+    }
+}
+
+Подобным образом мы можем создать объекты User по данным из xml:
+using System;
+using System.Collections.Generic;
+using System.Xml;
+ 
+namespace HelloApp
+{
+    class User
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Company { get; set; }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<User> users = new List<User>();
+ 
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load("D://users.xml");
+            XmlElement xRoot = xDoc.DocumentElement;
+            foreach (XmlElement xnode in xRoot)
+            {
+                User user = new User();
+                XmlNode attr = xnode.Attributes.GetNamedItem("name");
+                if (attr != null)
+                    user.Name = attr.Value;
+ 
+                foreach (XmlNode childnode in xnode.ChildNodes)
+                {
+                    if (childnode.Name == "company")
+                        user.Company = childnode.InnerText;
+ 
+                    if (childnode.Name == "age")
+                        user.Age = Int32.Parse(childnode.InnerText);
+                }
+                users.Add(user);
+            }
+            foreach (User u in users)
+                Console.WriteLine($"{u.Name} ({u.Company}) - {u.Age}");
+            Console.Read();
+        }
+    }
+}
+
+=========================================================================================
+XmlNode: представляет узел xml. В качестве узла может использоваться весь документ, так и отдельный элемент
+
+XmlDocument: представляет весь xml-документ
+
+XmlElement: представляет отдельный элемент. Наследуется от класса XmlNode
+
+XmlAttribute: представляет атрибут элемента
+
+XmlText: представляет значение элемента в виде текста, то есть тот текст, который находится в элементе между его открывающим и закрывающим тегами
+
+XmlComment: представляет комментарий в xml
+
+XmlNodeList: используется для работы со списком узлов
+
+Ключевым классом, который позволяет манипулировать содержимым xml, является XmlNode, поэтому рассмотрим некоторые его основные методы и свойства:
+
+Свойство Attributes возвращает объект XmlAttributeCollection, который представляет коллекцию атрибутов
+
+Свойство ChildNodes возвращает коллекцию дочерних узлов для данного узла
+
+Свойство HasChildNodes возвращает true, если текущий узел имеет дочерние узлы
+
+Свойство FirstChild возвращает первый дочерний узел
+
+Свойство LastChild возвращает последний дочерний узел
+
+Свойство InnerText возвращает текстовое значение узла
+
+Свойство InnerXml возвращает всю внутреннюю разметку xml узла
+
+Свойство Name возвращает название узла. Например, <user> - значение свойства Name равно "user"
+
+Свойство ParentNode возвращает родительский узел у текущего узла
+=========================================================================================
+Создаем класс Props и прописываем туда следующий код
+
+
+using System;
+//Надо добавить для работы класса
+using System.Xml.Serialization;
+using System.IO;
+ 
+namespace XMLFileSettings
+{
+    //Класс определяющий какие настройки есть в программе
+    public class PropsFields
+    {
+        //Путь до файла настроек
+        public String XMLFileName = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("PROGRAM_NAME.exe", "") + "settings.xml";
+
+        //Чтобы добавить настройку в программу просто добавьте суда строку вида - 
+        //public ТИП ИМЯ_ПЕРЕМЕННОЙ = значение_переменной_по_умолчанию;
+        public String TextValue = @"Testing XML File Settings";
+        public DateTime DateValue = new DateTime(2011, 1, 1);        
+        public Decimal DecimalValue = 555;
+        public Boolean BoolValue = true;
+    }
+ 
+    //Класс работы с настройками
+    public class Props
+    {
+        public PropsFields Fields;
+ 
+        public Props()
+        {
+            Fields = new PropsFields();
+        }
+ 
+        //Запист настроек в файл
+        public void WriteXml()
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(PropsFields));
+            TextWriter writer = new StreamWriter(Fields.XMLFileName);
+             ser.Serialize(writer, Fields);
+            writer.Close();
+        }
+ 
+        //Чтение настроек из файла
+        public void ReadXml()
+        {
+            if (File.Exists(Fields.XMLFileName)){
+                XmlSerializer ser = new XmlSerializer(typeof(PropsFields));
+                TextReader reader = new StreamReader(Fields.XMLFileName);
+                 Fields = ser.Deserialize(reader) as PropsFields;
+                reader.Close();
+            }
+            else{}
+        }
+    }
+}
+
+
+Теперь, чтобы использовать настройки в своей программе сделаем следующее -
+
+using System;
+using System.Windows.Forms;
+ 
+namespace XMLFileSettings
+{
+    public partial class Form1 : Form
+    {
+        #region Settings action
+        Props props = new Props();
+ 
+        //Запись настроек
+        private void writeSetting()
+        {
+            props.Fields.TextValue = textBox1.Text;
+            props.Fields.DateValue = dateTimePicker1.Value;
+            props.Fields.DecimalValue = numericUpDown1.Value;
+            props.Fields.BoolValue = checkBox1.Checked;
+ 
+            props.WriteXml();
+        }
+ 
+        //Чтение настроек
+        private void readSetting()
+        {
+            props.ReadXml();
+ 
+            textBox1.Text = props.Fields.TextValue;
+            dateTimePicker1.Value = props.Fields.DateValue;
+            numericUpDown1.Value = props.Fields.DecimalValue;
+            checkBox1.Checked = props.Fields.BoolValue;
+        }
+        #endregion
+ 
+        #region Form Action
+        public Form1()
+        {
+            InitializeComponent();
+        }
+ 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            readSetting();
+        }
+ 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            writeSetting();
+        }
+        #endregion
+    }
+}

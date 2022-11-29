@@ -1,0 +1,38 @@
+2021-08-06 13:27:25.2104 INFO: Application started
+2021-08-06 13:27:27.4586 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:27:30.8288 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:27:35.4882 INFO: Осуществлен успешный вход в режим администрирования
+2021-08-06 13:27:37.8735 INFO: Пользователь произвел переход на страницу Discrete X
+2021-08-06 13:27:37.9916 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:27:41.4597 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:27:44.5225 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:27:47.6274 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:27:50.6967 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:27:53.7968 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:27:57.2906 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:28:00.3815 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 13:36:13.3792 INFO: Application started
+2021-08-06 13:36:48.6994 INFO: Application closed
+2021-08-06 13:36:58.7850 INFO: Application started
+2021-08-06 13:37:08.6145 INFO: Application closed
+2021-08-06 13:38:20.3801 INFO: Application started
+2021-08-06 13:38:37.0800 INFO: Application closed
+2021-08-06 14:09:31.1832 INFO: Application started
+2021-08-06 14:09:32.8219 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 14:09:36.2320 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 14:09:39.2570 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 14:09:42.2637 ERROR: Error during connection to TwinCAT PLC
+2021-08-06 14:10:40.4098 INFO: Application started
+2021-08-06 14:10:41.4801 INFO: Application shutdown
+2021-08-06 14:10:42.1451 INFO: Application closed
+2021-08-06 14:13:41.6042 INFO: Application started
+2021-08-06 14:13:44.1972 INFO: Application shutdown
+2021-08-06 14:13:44.6845 INFO: Application closed
+2021-08-06 14:21:16.7663 INFO: Application started
+2021-08-06 14:21:32.7811 INFO: Выбран режим открытия на скорости 30%
+2021-08-06 14:21:33.2978 INFO: Выбран режим открытия на скорости 60%
+2021-08-06 14:21:43.9398 INFO: Осуществлен успешный вход в режим администрирования
+2021-08-06 14:21:51.0937 INFO: Пользователь произвел переход на страницу Discrete X
+2021-08-06 14:37:07.0755 INFO: Application started
+2021-08-06 14:37:14.9690 INFO: Осуществлен успешный вход в режим администрирования
+2021-08-06 14:37:16.3643 INFO: Пользователь произвел переход на страницу Discrete X
