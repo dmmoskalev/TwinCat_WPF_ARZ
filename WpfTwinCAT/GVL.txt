@@ -1,0 +1,67 @@
+Encoder
+	ADS_address AT %I*:AMSADDR;
+	PositionValue AT %I*:UDINT;
+	TimeStamp AT %I*:UDINT;
+	EncStepsPerOneMM : REAL :=12.04; //= 8192 steps per rev/680mm = 12.04
+	PositionTarget:UDINT; // new position target in mm
+	DistanceTarget:UDINT; // distance for relative moving in mm
+	DirectionRelative:BOOL; // true = fwd, false = backward
+	Alarm AT %I*:UINT;
+	State AT %I*:UINT;
+	UpLimitInSteps:UDINT := 245760; // 30 revolutions (apr 20.4m), each rev= 8192 steps
+	LowLimitInSteps:UDINT :=300;
+	
+
+
+Converter
+
+
+	//inputs
+	ADS_address AT %I*:AMSADDR;
+	Output_Frequency_Monitor AT %I*: UINT;
+	Output_Current_Monitor AT %I*: UINT;
+	//slave state PLC report
+	State AT %I*: UINT;
+	//invertor status
+	Status AT %I*: UINT;
+	//monitor status vars
+	D081_FaultCause AT %I*: INT;
+	D081_FaultInverterStatus AT %I*: INT;
+	D005_MF_InputsMonitor AT %I*: INT;
+	MotorMaxRevPerMin:UINT:=1350; // maximum revolutions per minute on max frequency 50Hz - motor parametr
+	ReductionCx:REAL:=20.0; //reduction coefficient in case the reductor is installed
+	DistancePerRevInMM:REAL:=680.0; //distance passed during one revolution of drum driver in mm
+	JogDistanceInMM:REAL :=50; // override lomit back jog distance (jump back) in mm
+	
+	Alarm_Fault: STRING[256];
+	Alarm_Status: STRING[256];
+	//output command and parameters
+	Command AT %Q*: UINT;
+	
+	// move monitor status
+	During_Fwd AT %Q*: BOOL;
+	During_Rev AT %Q*: BOOL;
+	Fault AT %Q*: BOOL;
+	Warning AT %Q*: BOOL;
+	Remote AT %Q*: BOOL;
+	Freq_Match AT %Q*: BOOL;
+	Connection_Error AT %Q*: BOOL;
+	Frequency_out AT %Q*: REAL;
+	
+	//move controls
+	
+	EnableFreeRun AT %Q*: BOOL;
+	EnableAbsolute AT %Q*: BOOL;
+	EnableRelative AT %Q*: BOOL;
+	Fwd AT %Q*:BOOL;
+	Rev AT %Q*:BOOL;
+	Frequency_in AT %Q*: REAL;
+	Frequency_in_SlowMotion AT %Q*: REAL:=5.0;
+	Acceleration AT %Q*: REAL;
+	Deceleration AT %Q*: REAL;
+	F002_1st_Acceleration AT %Q*: DINT;
+	F003_1st_Deceleration AT %Q* : DINT;
+	FreqReference AT %Q*: UINT;
+	Fault_Reset AT %Q*: BOOL;
+	WorkingLimitNotAchieved AT %Q*: BOOL;
+	ScanPeriod:UDINT :=10; // system PlcTask scan period in millisec

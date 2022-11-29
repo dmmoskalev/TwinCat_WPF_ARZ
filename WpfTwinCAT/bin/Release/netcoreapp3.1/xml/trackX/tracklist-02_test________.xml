@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDataPoint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DataPoint>
+    <Dist>0.7204610705375671</Dist>
+    <Velocity>0</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>1.2931040222497725</Dist>
+    <Velocity>0.6</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>2.0135651821943066</Dist>
+    <Velocity>0.6</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>2.1613833904266357</Dist>
+    <Velocity>0</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>2.857916762520599</Dist>
+    <Velocity>0.8</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>4.148633437829781</Dist>
+    <Velocity>0.8</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>4.3227667808532715</Dist>
+    <Velocity>0</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>5.019300112118444</Dist>
+    <Velocity>0.8</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>6.310016600045035</Dist>
+    <Velocity>0.8</Velocity>
+  </DataPoint>
+  <DataPoint>
+    <Dist>6.484149932861328</Dist>
+    <Velocity>0</Velocity>
+  </DataPoint>
+</ArrayOfDataPoint>

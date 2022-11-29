@@ -1,0 +1,173 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Sources\**" />
+    <EmbeddedResource Remove="Sources\**" />
+    <None Remove="Sources\**" />
+    <Page Remove="Sources\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="back.png" />
+    <None Remove="Images\arDown.png" />
+    <None Remove="Images\arDown_00.png" />
+    <None Remove="Images\arDown_30.png" />
+    <None Remove="Images\arDown_60.png" />
+    <None Remove="Images\arDown_90.png" />
+    <None Remove="Images\arDown_na.png" />
+    <None Remove="Images\arDown_stop.png" />
+    <None Remove="Images\arLeft.png" />
+    <None Remove="Images\arLeft_00.png" />
+    <None Remove="Images\arLeft_30.png" />
+    <None Remove="Images\arLeft_60.png" />
+    <None Remove="Images\arLeft_90.png" />
+    <None Remove="Images\arLeft_na.png" />
+    <None Remove="Images\arLeft_stop.png" />
+    <None Remove="Images\arLeft_stop96.png" />
+    <None Remove="Images\arRight.png" />
+    <None Remove="Images\arRight_00.png" />
+    <None Remove="Images\arRight_30.png" />
+    <None Remove="Images\arRight_60.png" />
+    <None Remove="Images\arRight_90.png" />
+    <None Remove="Images\arRight_na.png" />
+    <None Remove="Images\arRight_stop.png" />
+    <None Remove="Images\arUp.png" />
+    <None Remove="Images\arUp_00.png" />
+    <None Remove="Images\arUp_30.png" />
+    <None Remove="Images\arUp_60.png" />
+    <None Remove="Images\arUp_90.png" />
+    <None Remove="Images\arUp_na.png" />
+    <None Remove="Images\arUp_stop.png" />
+    <None Remove="Images\back.png" />
+    <None Remove="Images\bt_cancel.png" />
+    <None Remove="Images\bt_down.png" />
+    <None Remove="Images\bt_enter.png" />
+    <None Remove="Images\bt_enter_r.png" />
+    <None Remove="Images\bt_up.png" />
+    <None Remove="Images\chartDown.png" />
+    <None Remove="Images\chartUp.png" />
+    <None Remove="Images\Curtain.png" />
+    <None Remove="Images\Curtain_svg.svg" />
+    <None Remove="Images\file_read.png" />
+    <None Remove="Images\file_write.png" />
+    <None Remove="Images\home.png" />
+    <None Remove="Images\home_na.png" />
+    <None Remove="Images\linear_track.png" />
+    <None Remove="Images\linear_track_vert.png" />
+    <None Remove="Images\minus.png" />
+    <None Remove="Images\move_left.png" />
+    <None Remove="Images\move_right.png" />
+    <None Remove="Images\plus.png" />
+    <None Remove="Images\run.png" />
+    <None Remove="Images\settings.png" />
+    <None Remove="Images\settings_na.png" />
+    <None Remove="Images\test.png" />
+    <None Remove="Images\test_na.png" />
+    <None Remove="Images\track.png" />
+    <None Remove="Images\track_na.png" />
+    <None Remove="Images\track_vert_na.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Beckhoff.TwinCAT.Ads" Version="6.0.102" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="6.1.2" />
+    <PackageReference Include="NLog" Version="4.7.10" />
+    <PackageReference Include="NLog.Config" Version="4.7.10" />
+    <PackageReference Include="System.Management" Version="5.0.0" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ICPDAS_USBIO_dotNET">
+      <HintPath>bin\Debug\netcoreapp3.1\ICPDAS_USBIO_dotNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>bin\Debug\netcoreapp3.1\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit">
+      <HintPath>bin\Debug\netcoreapp3.1\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\arDown_00.png" />
+    <Resource Include="Images\arDown_30.png" />
+    <Resource Include="Images\arDown_60.png" />
+    <Resource Include="Images\arDown_90.png" />
+    <Resource Include="Images\arDown_stop.png" />
+    <Resource Include="Images\arLeft_00.png" />
+    <Resource Include="Images\arLeft_30.png" />
+    <Resource Include="Images\arLeft_60.png" />
+    <Resource Include="Images\arLeft_90.png" />
+    <Resource Include="Images\arLeft_stop.png" />
+    <Resource Include="Images\arRight_00.png" />
+    <Resource Include="Images\arRight_30.png" />
+    <Resource Include="Images\arRight_60.png" />
+    <Resource Include="Images\arRight_90.png" />
+    <Resource Include="Images\arRight_stop.png" />
+    <Resource Include="Images\arUp_00.png" />
+    <Resource Include="Images\arUp_30.png" />
+    <Resource Include="Images\arUp_60.png" />
+    <Resource Include="Images\arUp_90.png" />
+    <Resource Include="Images\arUp_stop.png" />
+    <Resource Include="Images\back.png" />
+    <Resource Include="Images\bt_cancel.png" />
+    <Resource Include="Images\bt_down.png" />
+    <Resource Include="Images\bt_enter.png" />
+    <Resource Include="Images\bt_enter_r.png" />
+    <Resource Include="Images\bt_up.png" />
+    <Resource Include="Images\chartDown.png" />
+    <Resource Include="Images\chartUp.png" />
+    <Resource Include="Images\Curtain.png" />
+    <Resource Include="Images\file_read.png" />
+    <Resource Include="Images\file_write.png" />
+    <Resource Include="Images\home.png" />
+    <Resource Include="Images\home_na.png" />
+    <Resource Include="Images\linear_track.png" />
+    <Resource Include="Images\linear_track_vert.png" />
+    <Resource Include="Images\minus.png" />
+    <Resource Include="Images\move_left.png" />
+    <Resource Include="Images\move_right.png" />
+    <Resource Include="Images\plus.png" />
+    <Resource Include="Images\run.png" />
+    <Resource Include="Images\settings.png" />
+    <Resource Include="Images\settings_na.png" />
+    <Resource Include="Images\test.png" />
+    <Resource Include="Images\test_na.png" />
+    <Resource Include="Images\track.png" />
+    <Resource Include="Images\track_na.png" />
+    <Resource Include="Images\track_vert_na.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\DiscreteXPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\PresetEditPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Pages\DiscreteXPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\PresetEditPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

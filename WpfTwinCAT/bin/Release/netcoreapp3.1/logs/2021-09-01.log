@@ -1,0 +1,41 @@
+2021-09-01 14:36:01.8784 INFO: Application started
+2021-09-01 14:36:06.5400 INFO: Выбран режим подъема на скорости 30%
+2021-09-01 14:36:07.4874 INFO: Выбран режим открытия на скорости 30%
+2021-09-01 14:36:08.3167 INFO: Выбран режим закрытия на скорости 30%
+2021-09-01 14:36:22.3921 INFO: Осуществлен успешный вход в режим администрирования
+2021-09-01 14:36:23.5876 INFO: Пользователь произвел переход на страницу Discrete X
+2021-09-01 15:09:13.1199 INFO: Application started
+2021-09-01 15:09:13.4307 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:17.0355 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:20.3202 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:23.5335 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:26.7694 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:30.0654 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:33.3157 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:36.5323 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:39.5823 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:42.9699 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:46.3535 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:49.5991 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:53.0245 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:09:56.1327 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:10:02.4955 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:11:08.6883 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:13:19.1004 INFO: Application started
+2021-09-01 15:17:43.0692 INFO: Application started
+2021-09-01 15:17:52.5695 INFO: Выбран режим открытия на скорости 30%
+2021-09-01 15:17:54.1854 INFO: Выбран режим закрытия на скорости 30%
+2021-09-01 15:17:54.8265 INFO: Выбран режим открытия на скорости 30%
+2021-09-01 15:34:30.8495 INFO: Application started
+2021-09-01 15:34:31.1838 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:34:34.4096 ERROR: Error during connection to TwinCAT PLC
+2021-09-01 15:34:58.1775 INFO: Выбран режим подъема на скорости 30%
+2021-09-01 15:34:59.1408 INFO: Выбран режим открытия на скорости 30%
+2021-09-01 15:35:00.0175 INFO: Выбран режим закрытия на скорости 30%
+2021-09-01 15:35:00.8247 INFO: Выбран режим открытия на скорости 30%
+2021-09-01 15:35:01.6552 INFO: Выбран режим открытия на скорости 60%
+2021-09-01 15:48:59.8534 INFO: Application started
+2021-09-01 15:49:18.6084 INFO: Выбран режим открытия на скорости 30%
+2021-09-01 15:49:19.3571 INFO: Выбран режим открытия на скорости 60%
+2021-09-01 15:49:28.4360 INFO: Осуществлен успешный вход в режим администрирования
+2021-09-01 15:49:29.4250 INFO: Пользователь произвел переход на страницу Discrete X

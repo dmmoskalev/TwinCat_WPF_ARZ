@@ -1,0 +1,169 @@
+//Status extraction///
+(*
+0 Forward operation in progress:
+		0: Stopped/during reverse operation
+		1: During forward operation
+1 Reverse operation in progress:
+		0: Stopped/during forward operation
+		1: During reverse operation
+3 Fault:
+		0: No error trip occurred for the unit or inverter
+		1: Error trip occurred for the unit or inverter
+7 Warning:
+		0: No warning occurred for the unit or inverter
+		1: Warning occurred for the unit or inverter
+9 Remote:
+		0: Local (Operations from EtherCAT are disabled)
+		1: Remote (Operations from EtherCAT are enabled)
+12 Frequency matching:
+		0: During acceleration/deceleration
+		1: Frequency matched
+15 Connection error between the Optional Unit and inverter:
+		0: Normal
+		1: Error (Cannot update data FOR the inverter. TO restore, turn the power OFF and then ON again.)
+*)
+(* 
+	Command
+	Bit 0: Forward/stop
+	Bit 1: Reverse/stop
+	Bit 7: Fault reset 
+	*)
+
+	tmp_Status.ch := Status;
+	tmp_MF_Inputs.ch := D005_MF_InputsMonitor;
+	WorkingLimitNotAchieved := tmp_MF_Inputs.aBits.bBit5;
+	During_Fwd := tmp_Status.aBits.bBit0;
+	During_Rev := tmp_Status.aBits.bBit1;
+	Fault := tmp_Status.aBits.bBit3;
+	Warning := tmp_Status.aBits.bBit7;
+	Remote := tmp_Status.aBits.bBit9;
+	Freq_Match := tmp_Status.aBits.bBit12;
+	Connection_Error := tmp_Status.aBits.bBit15;
+	
+	(* Specify the reference 
+	frequency in increments of 0.01 Hz. When a value is set that
+	exceeds the maximum frequency, operation is performed at the maximum frequency. 
+	Setup the inverter parameter A004: Maximum Frequency before operation via mailbox on startup P-S.*)
+	IF Frequency_in>0.01 THEN;
+		tmp_freq_in_real:= Frequency_in*100;
+		FreqReference:= REAL_TO_UINT(tmp_freq_in_real);
+	END_IF
+	
+	
+	//Convert Output_Frequency_Monitor to a REAL value//
+	tmp_freq_out_int:=Output_Frequency_Monitor;
+	Frequency_out:=UINT_TO_REAL(tmp_freq_out_int)/100.0;
+		
+	//Acceleration/Deceleration Time  in REAL value//
+	IF Acceleration>0.01 THEN;
+		tmp_acc_real:=Acceleration*100;
+		F002_1st_Acceleration := REAL_TO_INT(tmp_acc_real);
+	END_IF;
+	
+	IF Deceleration>0.01 THEN;
+		tmp_dec_real:=Deceleration*100;
+		F003_1st_Deceleration := REAL_TO_INT(tmp_dec_real);
+	END_IF;
+	
+	//Alarms read
+	///Status extraction///
+	
+	tmp_i_Fault_Monitor_1_Cause := D081_FaultCause;
+	tmp_i_Fault_Monitor_1_Inverter_Status := D081_FaultInverterStatus;
+	Alarm_Fault:='--';	
+	Alarm_Status:='--';
+
+//If MX2 has an fault the latest fault will be outputted//
+IF tmp_Status.aBits.bBit3 THEN
+	
+	//MX2 Inverter fault factor list name//
+	CASE tmp_i_Fault_Monitor_1_Cause OF
+		00 : 
+			Alarm_Fault:='No trip factor';	
+		01 : 
+			Alarm_Fault:='Overcurrent protection during constant speed';
+		02 : 
+			Alarm_Fault:='Overcurrent protection during deceleration';
+		03 : 
+			Alarm_Fault:='Overcurrent protection during acceleration';
+		04 : 
+			Alarm_Fault:='Overcurrent protection during stop';
+		05 : 
+			Alarm_Fault:='Overload protection';
+		06 : 
+			Alarm_Fault:='Braking resistor overload protection';
+		07 : 
+			Alarm_Fault:='Overvoltage protection';
+		08 : 
+			Alarm_Fault:='EEPROM error';
+		09 : 
+			Alarm_Fault:='Undervoltage protection';
+		10 : 
+			Alarm_Fault:='Current detector error';
+		11 : 
+			Alarm_Fault:='CPU error';
+		12 : 
+			Alarm_Fault:='External trip';
+		13 : 
+			Alarm_Fault:='USP error';
+		14 : 
+			Alarm_Fault:='Grounding protection';
+		15 : 
+			Alarm_Fault:='Incoming overvoltage protection';
+		21 : 
+			Alarm_Fault:='Abnormal temperature';
+		25 : 
+			Alarm_Fault:='Main circuit error';
+		30 : 
+			Alarm_Fault:='Driver error';
+		35 : 
+			Alarm_Fault:='Thermistor error';
+		36 : 
+			Alarm_Fault:='Brake error';
+		37 : 
+			Alarm_Fault:='Emergency shutoff';
+		38 : 
+			Alarm_Fault:='Overload protection in a low speed range';
+		40 : 
+			Alarm_Fault:='Digital operator connection error';
+		41 : 
+			Alarm_Fault:='Modbus communication (Modbus-RTU) error';
+		43..45 : 
+			Alarm_Fault:='Internal data error';
+		50..69 : 
+			Alarm_Fault:='Internal data error';	
+		80 : 
+			Alarm_Fault:='Encoder disconnection';
+		81 : 
+			Alarm_Fault:='Overspeed';
+		83 : 
+			Alarm_Fault:='Position control range trip';
+		
+	
+			
+	END_CASE;
+
+//MX2 Inverter status at fault occur//
+	CASE tmp_i_Fault_Monitor_1_Inverter_Status OF
+    	0 : 
+			Alarm_Status:='During reset';
+		1 : 
+			Alarm_Status:='During stop';
+		2 : 
+			Alarm_Status:='During deceleration';
+		3 : 
+			Alarm_Status:='At a constant speed';
+		4 : 
+			Alarm_Status:='During acceleration';
+		5 : 
+			Alarm_Status:='Operates at frequency = 0';
+		6 : 
+			Alarm_Status:='During startup';
+		7 : 
+			Alarm_Status:='DB active (DC injection braking active)';
+		8 : 
+			Alarm_Status:='During overload limit';
+		
+	END_CASE;
+	
+END_IF;

@@ -1,0 +1,406 @@
+﻿<Page x:Class="WpfTwinCAT.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfTwinCAT.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="470" d:DesignWidth="1024"
+      Loaded="OnLoad"
+      Unloaded="OnUnloaded"
+      Title="SettingsPage">
+    <Page.Resources>
+        <Style x:Key="ParameterName" TargetType="Label">
+            <Setter Property="Foreground" Value="Bisque"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            
+        </Style>
+        <Style x:Key="ParameterHeader" TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Padding" Value="5,0,5,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>            
+        </Style>
+        <Style x:Key="ValueBtn" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#FF595959"/>
+            <Setter Property="Foreground" Value="Bisque"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>           
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" Height="30" Width="160" >
+                               <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="blue"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#FF404040"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ValueLbl" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <!--Setter Property="FontWeight" Value="Bold"/-->
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Padding" Value="5,0,5,0"/>
+        </Style>
+        <Style x:Key="ImageStyle" TargetType="Image">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="42"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="42"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/> 
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+
+
+        </Grid.RowDefinitions>
+        
+        <Border BorderBrush="#FFFFC000" BorderThickness="3" CornerRadius="5"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="16" Grid.ColumnSpan="2">
+            <TextBlock x:Name="TbxSet_00" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Foreground="Bisque" Margin="10,10,10,10"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto">
+            Настройки по оси 1...
+            </TextBlock>
+
+        </Border>
+        <Border BorderBrush="#FFFFC000" BorderThickness="3" CornerRadius="5" Grid.Row="0" Grid.RowSpan="16" Grid.Column="4" Grid.ColumnSpan="2">
+            <TextBlock x:Name="TbxSet_01" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Foreground="Bisque" Margin="10,10,10,10"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto">
+            Настройки по оси 2...
+            </TextBlock>
+        </Border>
+        <!--#region first page-->
+        
+        <Button x:Name="Bt_000006" Grid.Row="1" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}" >
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_calibration_1"  Content="Калибровка" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings_na.png" Style="{StaticResource ImageStyle}" VerticalAlignment="Bottom" />
+                <Label x:Name="Lb_value_000006"  Content="--" IsEnabled="False"/>
+                <Label x:Name="Lb_descriptor_000006" Content="--" IsEnabled="false"/>
+                <TextBlock x:Name="Txt_calibration_1"   IsEnabled="false"/>
+                <TextBlock x:Name="Txt_000006"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <Label x:Name="LB_group_descriptor_0000"  Content="--" Grid.Row="1" Grid.Column="1" Style="{StaticResource ParameterHeader}" />
+
+        <Label x:Name="LB_group_descriptor_0001"  Content="--TEST" Grid.Row="8" Grid.Column="1" Style="{StaticResource ParameterHeader}" />
+        <!--#region 000000 -->
+        <Label x:Name="Lb_descriptor_000000" Content="--" Style="{StaticResource ParameterName}" Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="Bt_000000" Grid.Row="2" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000000"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000000"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000001 -->
+        <Label x:Name="Lb_descriptor_000001" Content="--" Style="{StaticResource ParameterName}" Grid.Row="3" Grid.Column="1"/>
+        <Button x:Name="Bt_000001" Grid.Row="3" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000001"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000001"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000002 -->
+        <Label x:Name="Lb_descriptor_000002" Content="--" Style="{StaticResource ParameterName}" Grid.Row="4" Grid.Column="1"/>
+        <Button x:Name="Bt_000002" Grid.Row="4" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000002"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000002"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000003 -->
+        <Label x:Name="Lb_descriptor_000003" Content="--" Style="{StaticResource ParameterName}" Grid.Row="5" Grid.Column="1"/>
+        <Button x:Name="Bt_000003" Grid.Row="5" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000003"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000003"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000004 -->
+        <Label x:Name="Lb_descriptor_000004" Content="--" Style="{StaticResource ParameterName}" Grid.Row="6" Grid.Column="1"/>
+        <Button x:Name="Bt_000004" Grid.Row="6" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000004"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000004"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000005 -->
+        <Label x:Name="Lb_descriptor_000005" Content="--" Style="{StaticResource ParameterName}" Grid.Row="7" Grid.Column="1"/>
+        <Button x:Name="Bt_000005" Grid.Row="7" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000005"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000005"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000100 -->
+        <Label x:Name="Lb_descriptor_000100" Content="--TEST" Style="{StaticResource ParameterName}" Grid.Row="9" Grid.Column="1"/>
+        <Button x:Name="Bt_000100" Grid.Row="9" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000100"  Content="--0000000000" Style="{StaticResource ValueLbl}" Padding="5,0,5,0" ScrollViewer.CanContentScroll="True"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000100"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000101 -->
+        <Label x:Name="Lb_descriptor_000101" Content="--" Style="{StaticResource ParameterName}" Grid.Row="10" Grid.Column="1"/>
+        <Button x:Name="Bt_000101" Grid.Row="10" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000101"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000101"  Text="Пояснение параметра" Tag="Определение параметра" IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000102 -->
+        <Label x:Name="Lb_descriptor_000102" Content="--" Style="{StaticResource ParameterName}" Grid.Row="11" Grid.Column="1"/>
+        <Button x:Name="Bt_000102" Grid.Row="11" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000102"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000102"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000103 -->
+        <Label x:Name="Lb_descriptor_000103" Content="--" Style="{StaticResource ParameterName}" Grid.Row="12" Grid.Column="1"/>
+        <Button x:Name="Bt_000103" Grid.Row="12" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000103"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000103"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000104 -->
+        <Label x:Name="Lb_descriptor_000104" Content="--" Style="{StaticResource ParameterName}" Grid.Row="13" Grid.Column="1"/>
+        <Button x:Name="Bt_000104" Grid.Row="13" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000104"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000104"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 000105 -->
+        <Label x:Name="Lb_descriptor_000105" Content="--" Style="{StaticResource ParameterName}" Grid.Row="14" Grid.Column="1"/>
+        <Button x:Name="Bt_000105" Grid.Row="14" Grid.Column="2" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_000105"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_000105"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#endregion-->
+        
+        <!--#region second page-->
+        
+        <Button x:Name="Bt_010006" Grid.Row="1" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}" >
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_calibration_2"  Content="Калибровка" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings_na.png" Style="{StaticResource ImageStyle}" VerticalAlignment="Bottom" />
+                <Label x:Name="Lb_value_010006"  Content="--" IsEnabled="False"/>
+                <Label x:Name="Lb_descriptor_010006" Content="--" IsEnabled="false"/>
+                <TextBlock x:Name="Txt_calibration_2"   IsEnabled="false"/>
+                <TextBlock x:Name="Txt_010006"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <Label x:Name="LB_group_descriptor_0100"  Content="--" Grid.Row="1" Grid.Column="4" Style="{StaticResource ParameterHeader}" />
+
+        <Label x:Name="LB_group_descriptor_0101"  Content="--" Grid.Row="8" Grid.Column="4" Style="{StaticResource ParameterHeader}" />
+        <!--#region 010000 -->
+        <Label x:Name="Lb_descriptor_010000" Content="--" Style="{StaticResource ParameterName}" Grid.Row="2" Grid.Column="4"/>
+        <Button x:Name="Bt_010000" Grid.Row="2" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010000"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010000"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010001 -->
+        <Label x:Name="Lb_descriptor_010001" Content="--" Style="{StaticResource ParameterName}" Grid.Row="3" Grid.Column="4"/>
+        <Button x:Name="Bt_010001" Grid.Row="3" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010001"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010001"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010002 -->
+        <Label x:Name="Lb_descriptor_010002" Content="--" Style="{StaticResource ParameterName}" Grid.Row="4" Grid.Column="4"/>
+        <Button x:Name="Bt_010002" Grid.Row="4" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010002"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010002"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010003 -->
+        <Label x:Name="Lb_descriptor_010003" Content="--" Style="{StaticResource ParameterName}" Grid.Row="5" Grid.Column="4"/>
+        <Button x:Name="Bt_010003" Grid.Row="5" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010003"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010003"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010004 -->
+        <Label x:Name="Lb_descriptor_010004" Content="--" Style="{StaticResource ParameterName}" Grid.Row="6" Grid.Column="4"/>
+        <Button x:Name="Bt_010004" Grid.Row="6" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010004"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010004"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010005 -->
+        <Label x:Name="Lb_descriptor_010005" Content="--" Style="{StaticResource ParameterName}" Grid.Row="7" Grid.Column="4"/>
+        <Button x:Name="Bt_010005" Grid.Row="7" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010005"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010005"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010100 -->
+        <Label x:Name="Lb_descriptor_010100" Content="--" Style="{StaticResource ParameterName}" Grid.Row="9" Grid.Column="4"/>
+        <Button x:Name="Bt_010100" Grid.Row="9" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010100"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010100"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010101 -->
+        <Label x:Name="Lb_descriptor_010101" Content="--" Style="{StaticResource ParameterName}" Grid.Row="10" Grid.Column="4"/>
+        <Button x:Name="Bt_010101" Grid.Row="10" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010101"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010101"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010102 -->
+        <Label x:Name="Lb_descriptor_010102" Content="--" Style="{StaticResource ParameterName}" Grid.Row="11" Grid.Column="4"/>
+        <Button x:Name="Bt_010102" Grid.Row="11" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010102"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010102"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010103 -->
+        <Label x:Name="Lb_descriptor_010103" Content="--" Style="{StaticResource ParameterName}" Grid.Row="12" Grid.Column="4"/>
+        <Button x:Name="Bt_010103" Grid.Row="12" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010103"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010103"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010104 -->
+        <Label x:Name="Lb_descriptor_010104" Content="--" Style="{StaticResource ParameterName}" Grid.Row="13" Grid.Column="4"/>
+        <Button x:Name="Bt_010104" Grid.Row="13" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010104"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010104"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#region 010105 -->
+        <Label x:Name="Lb_descriptor_010105" Content="--" Style="{StaticResource ParameterName}" Grid.Row="14" Grid.Column="4"/>
+        <Button x:Name="Bt_010105" Grid.Row="14" Grid.Column="5" Click="Bt_0_click" 
+                   Style="{StaticResource ValueBtn}">
+            <StackPanel Orientation="Horizontal" >
+                <Label x:Name="Lb_value_010105"  Content="--" Style="{StaticResource ValueLbl}"/>
+                <Image Source="/Images/settings.png" Style="{StaticResource ImageStyle}"/>
+                <TextBlock x:Name="Txt_010105"   IsEnabled="false"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
+        <!--#endregion-->   
+
+    </Grid>
+</Page>
