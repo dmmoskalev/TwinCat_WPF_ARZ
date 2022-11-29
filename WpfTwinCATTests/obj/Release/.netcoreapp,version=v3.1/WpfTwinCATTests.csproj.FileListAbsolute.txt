@@ -1,4 +1,0 @@
-C:\Users\dmmos\OneDrive\Projects\Москва\Intoku\Екатеринбург\Драм театр\SW\20220423_beta\WpfTwinCATTests\obj\Release\.netcoreapp,version=v3.1\WpfTwinCATTests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\dmmos\OneDrive\Projects\Москва\Intoku\Екатеринбург\Драм театр\SW\20220423_beta\WpfTwinCATTests\obj\Release\.netcoreapp,version=v3.1\WpfTwinCATTests.AssemblyInfoInputs.cache
-C:\Users\dmmos\OneDrive\Projects\Москва\Intoku\Екатеринбург\Драм театр\SW\20220423_beta\WpfTwinCATTests\obj\Release\.netcoreapp,version=v3.1\WpfTwinCATTests.AssemblyInfo.cs
-C:\Users\dmmos\OneDrive\Projects\Москва\Intoku\Екатеринбург\Драм театр\SW\20220423_beta\WpfTwinCATTests\obj\Release\.netcoreapp,version=v3.1\WpfTwinCATTests.csproj.CoreCompileInputs.cache
